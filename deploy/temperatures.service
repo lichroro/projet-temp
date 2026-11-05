@@ -1,0 +1,13 @@
+[Unit]
+Description=Service de mesure des températures COGIP
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/supervision/mesures.py
+WorkingDirectory=/home/pi/supervision
+Restart=always
+RestartSec=5
+User=pi
+
+[Install]
+WantedBy=multi-user.target
