@@ -1,0 +1,32 @@
+:root {
+  --fond: #f3f5f4; --encre: #1c2a2e; --carte: #ffffff; --trait: #d5dcda;
+  --ok: #1f8a4c; --alerte: #d9822b; --critique: #c62f2f; --inconnu: #7b8794;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fond); color: var(--encre);
+       font-family: "Inter", "Segoe UI", system-ui, sans-serif; }
+header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--trait); background: var(--carte);
+         display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem; }
+h1 { font-size: 1.25rem; margin: 0; }
+main { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+.grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+.armoire { background: var(--carte); border: 1px solid var(--trait); border-left: 10px solid var(--inconnu);
+           border-radius: 4px; padding: 1rem 1.25rem; }
+.armoire h2 { margin: 0; font-size: 1rem; }
+.armoire .produit, .armoire .plage, .armoire .heure { font-size: .85rem; color: #4d5b60; }
+.armoire .temp { font-size: 3rem; font-weight: 700; font-variant-numeric: tabular-nums; margin: .4rem 0; }
+.armoire .statut { font-weight: 600; }
+.armoire.ok       { border-left-color: var(--ok); }       .ok .statut       { color: var(--ok); }
+.armoire.alerte   { border-left-color: var(--alerte); }   .alerte .statut   { color: var(--alerte); }
+.armoire.critique { border-left-color: var(--critique); background: #fdeeee; }
+.critique .statut { color: var(--critique); }
+.armoire.inconnu  { border-left-color: var(--inconnu); }  .inconnu .statut  { color: var(--inconnu); }
+a { color: #0d5c7a; }
+/* écran de cuisine : grand format, lisible à 4 m */
+body.cuisine main { max-width: none; padding: 1rem; }
+body.cuisine .grille { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+body.cuisine .armoire h2 { font-size: 1.8rem; }
+body.cuisine .armoire .temp { font-size: 6rem; }
+body.cuisine .armoire .produit, body.cuisine .armoire .plage { font-size: 1.2rem; }
+body.cuisine .armoire .statut { font-size: 1.6rem; }
+canvas { background: var(--carte); border: 1px solid var(--trait); border-radius: 4px; padding: .5rem; }

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supervision des températures</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Cuisine COGIP — températures des armoires</h1>
+    <span>Dernière mise à jour : <span id="maj">—</span></span>
+  </header>
+  <main>
+    <div class="grille" id="grille">
+      {% for d in donnees %}
+      <article class="armoire {{ d.etat }}">
+        <h2>{{ d.nom }}</h2>
+        <div class="produit">{{ d.type_produit }}</div>
+        <div class="temp">{{ '%.0f'|format(d.temperature) if d.temperature is not none else '—' }} °C</div>
+        <div class="plage">Plage : {{ d.temp_min }} à {{ d.temp_max }} °C</div>
+      </article>
+      {% endfor %}
+    </div>
+    <h2>Historique (7 jours)</h2>
+    <ul>
+      {% for d in donnees %}<li><a href="{{ url_for('historique', armoire_id=d.armoire_id) }}">{{ d.nom }} — {{ d.type_produit }}</a></li>{% endfor %}
+    </ul>
+    <p><a href="{{ url_for('rapport_pdf') }}">Rapport PDF des 7 derniers jours</a></p>
+  </main>
+  <script src="{{ url_for('static', filename='supervision.js') }}"></script>
+</body>
+</html>

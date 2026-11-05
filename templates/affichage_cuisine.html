@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Écran cuisine</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="cuisine">
+  <main>
+    <div class="grille" id="grille"></div>
+    <p style="font-size:1rem;color:#4d5b60">Mise à jour : <span id="maj">—</span></p>
+  </main>
+  <script src="{{ url_for('static', filename='supervision.js') }}"></script>
+</body>
+</html>
